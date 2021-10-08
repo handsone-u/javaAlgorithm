@@ -3,6 +3,10 @@ package graph;
 import java.io.*;
 import java.util.*;
 
+/**
+ * 1753
+ * dijkstra Algorithm
+ */
 public class Main1753 {
     static BufferedReader bufferedReader;
     static BufferedWriter bufferedWriter;
