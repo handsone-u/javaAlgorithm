@@ -31,7 +31,6 @@ public class Baek1654 {
 
         while (min <= max) {
             long middle = (min + max) / 2;
-            if(middle==0) middle++;
             long tmpN = getTotal(middle);
             if (tmpN < n) {
                 max = middle-1;
@@ -48,6 +47,7 @@ public class Baek1654 {
 
     public static long getTotal(long value) {
         long result = 0;
+        if(value==0) value++;
 
         for (int i = 0; i < k; i++) result += sorted[i] / value;
 
