@@ -1,4 +1,4 @@
-package hashPractice;
+package string;
 
 import java.io.*;
 
