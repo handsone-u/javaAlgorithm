@@ -21,6 +21,16 @@ public class Combination {
         arrayList.stream().forEach(ar -> System.out.printf("%d %d %d\n", ar[0], ar[1], ar[2]));
     }
 
+    private static void per(int d, int num){
+        if (num == d) {
+            doSome();
+        }
+    }
+
+    static boolean doSome() {
+        return true;
+    }
+
     private static void comb(int from,int cnt) {
         if (cnt == r) {
             arrayList.add(arr.clone());
