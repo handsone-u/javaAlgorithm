@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Priority Queue ... time complexity
  */
-public class Solution42891 {
+public class PriorityQueuePrac {
     public int solution(int[] food_times, long k) {
         int answer = 0, len = food_times.length, time = 0, passed = 0;
         PriorityQueue<Food> pq = new PriorityQueue<>(Comparator.comparing(Food::getRemain));

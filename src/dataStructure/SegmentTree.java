@@ -3,6 +3,9 @@ package dataStructure;
 import java.io.*;
 import java.util.Arrays;
 
+/**
+ * https://www.acmicpc.net/problem/2042
+ */
 public class SegmentTree {
     static int n,m, k;
     static long[] arr;

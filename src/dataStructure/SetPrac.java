@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 /**
  * SET
  */
-public class Solution42890 {
+public class SetPrac {
     HashSet<HashSet<Integer>> cks = new HashSet<>();
     String[][] r;
     int col, row;
