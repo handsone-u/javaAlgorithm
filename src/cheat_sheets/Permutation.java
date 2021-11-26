@@ -1,4 +1,4 @@
-package combination;
+package cheat_sheets;
 
 public class Permutation {
     static int[] result;
@@ -15,8 +15,11 @@ public class Permutation {
 
     private static void permutation(int cnt) {
         if (cnt == n) {
+            // do something Start
             for (int i : result) System.out.printf("%d ", i);
             System.out.println();
+            // do something End
+
             return;
         }
         for (int i = 0; i < n; i++) {
