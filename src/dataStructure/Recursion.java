@@ -27,6 +27,13 @@ public class Recursion {
         writer.close();
     }
 
+    /**
+     * K층 타워를 from 에서 to위치로 보내는 함수
+     * @param currentK: 현재 타워 층수
+     * @param from: 현재 위치
+     * @param to: 보낼 위치
+     * @param through: 경유 위치
+     */
     private static void moveTower(int currentK, int from, int to, int through) {
         // 가장 아래를 제외한 나머지 탑을 경유지(through)로 보냄
         if(currentK>1) {
