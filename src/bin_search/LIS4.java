@@ -6,11 +6,25 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class LIS4 {
-    static int n, ans;
-    static int[] arr;
-    static final ArrayList<Integer> lis = new ArrayList<>();
 
-    static void solution() {
+    public static void main(String[] args) throws IOException {
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        Solution object = new Solution();
+        object.gateWay(reader, writer);
+
+        writer.flush();
+        writer.close();
+    }
+}
+
+class Solution{
+    int n,ans;
+    int[] arr;
+    ArrayList<Integer> lis = new ArrayList<>();
+
+    private void solution() {
         lis.add(arr[0]);
 
         for (int i = 1; i < n; i++) {
@@ -25,7 +39,7 @@ public class LIS4 {
         ans = lis.size();
     }
 
-    static int lowerBound(int value) {
+    int lowerBound(int value) {
 
         int index = Collections.binarySearch(lis, value);
         if(index>=0)
@@ -34,10 +48,7 @@ public class LIS4 {
             return -index - 1;
     }
 
-    public static void main(String[] args) throws IOException {
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-
+    public void gateWay(BufferedReader reader, BufferedWriter writer) throws IOException {
         n = Integer.parseInt(reader.readLine());
         arr = Arrays.stream(reader.readLine().split(" "))
                 .mapToInt(Integer::parseInt)
@@ -46,7 +57,5 @@ public class LIS4 {
         solution();
 
         writer.write(String.valueOf(ans));
-        writer.flush();
-        writer.close();
     }
 }
