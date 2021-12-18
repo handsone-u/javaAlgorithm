@@ -3,7 +3,9 @@ package dataStructure;
 import java.io.*;
 import java.util.Arrays;
 
+//TODO 설명추가
 /**
+ * - SegmentTree
  * https://www.acmicpc.net/problem/2042
  */
 public class SegmentTree {
