@@ -74,8 +74,9 @@ public class Dijkstra {
             for (Node next : nowEdge) {
                 int nextIndex = next.getIndex();
                 int nextWeight = next.getWeight();
-                if(nowWeight+nextWeight<result[nextIndex]){
-                    result[nextIndex] = nowWeight + nextWeight;
+                int nextResult = nowWeight + nextWeight;
+                if(nextResult <result[nextIndex]){
+                    result[nextIndex] = nextResult;
                     pq.offer(new Node(nextIndex, result[nextIndex]));
                 }
             }
