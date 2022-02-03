@@ -12,6 +12,33 @@ public class Dijkstra {
     static boolean[] visited;
     static ArrayList<Node>[] edges;
 
+    public static void dijkstra(int start) {
+        result[start] = 0;
+        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparing(Node::getWeight, Comparator.naturalOrder()));
+        pq.offer(new Node(start, 0));
+
+        while (!pq.isEmpty()) {
+            Node now = pq.poll();
+            int nowIndex = now.getIndex();
+            int nowWeight = now.getWeight();
+
+            // 이미 최단거리가 구해졌기 때문에 넘어간다. (GREEDY)
+            if(visited[now.index]) continue;
+            visited[now.index] = true;
+
+            ArrayList<Node> nowEdge = edges[nowIndex];
+            for (Node next : nowEdge) {
+                int nextIndex = next.getIndex();
+                int nextWeight = next.getWeight();
+                int nextResult = nowWeight + nextWeight;
+                if(nextResult <result[nextIndex]){
+                    result[nextIndex] = nextResult;
+                    pq.offer(new Node(nextIndex, result[nextIndex]));
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -54,33 +81,6 @@ public class Dijkstra {
         }
         writer.flush();
         writer.close();
-    }
-
-    public static void dijkstra(int start) {
-        result[start] = 0;
-        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparing(Node::getWeight, Comparator.naturalOrder()));
-        pq.offer(new Node(start, 0));
-
-        while (!pq.isEmpty()) {
-            Node now = pq.poll();
-            int nowIndex = now.getIndex();
-            int nowWeight = now.getWeight();
-
-            // 이미 최단거리가 구해졌기 때문에 넘어간다. (GREEDY)
-            if(visited[now.index]) continue;
-            visited[now.index] = true;
-
-            ArrayList<Node> nowEdge = edges[nowIndex];
-            for (Node next : nowEdge) {
-                int nextIndex = next.getIndex();
-                int nextWeight = next.getWeight();
-                int nextResult = nowWeight + nextWeight;
-                if(nextResult <result[nextIndex]){
-                    result[nextIndex] = nextResult;
-                    pq.offer(new Node(nextIndex, result[nextIndex]));
-                }
-            }
-        }
     }
 
     static class Node{
