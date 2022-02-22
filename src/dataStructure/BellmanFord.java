@@ -8,15 +8,20 @@ public class BellmanFord {
     static int[] distance;
     static ArrayList<Road>[] roads;
 
+    // 1. 시작 정점 결정
     static boolean solution(int n,int start) {
+        // 2. 시작 정점으로 부터 최단거리 초기화
         Arrays.fill(distance, 987654321);
-
         distance[start] = 0;
+
+        // 4. 3을 v-1번 반복
         for (int v = 1; v <= n; v++) {
             for (int i = 1; i <= n; i++) {
+                // 3. 현재 정점의 모든 인접 정점 탐색
                 for (Road road : roads[i]) {
                     if (distance[road.to] > distance[i] + road.weight) {
                         distance[road.to] = distance[i] + road.weight;
+                        // 5. v번 이상 반복되면 음수 사이클 발생
                         if(v==n) return true;
                     }
                 }
