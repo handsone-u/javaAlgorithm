@@ -1,4 +1,4 @@
-package graph;
+package floyd;
 
 import java.io.*;
 import java.util.Arrays;
