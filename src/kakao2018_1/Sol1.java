@@ -1,30 +1,21 @@
 package kakao2018_1;
 
 public class Sol1 {
-    private boolean[] toBin(int n,int num) {
-        boolean[] result = new boolean[n];
-        int div = (int) Math.pow(2, n);
+    private String bitWise(int n1, int n2, int n) {
+        int result = n1 | n2;
+        String str = String.format("%16s", Integer.toBinaryString(result));
+        str = str.substring(16 - n);
+        str = str.replaceAll("1", "#");
+        str = str.replaceAll("0", " ");
 
-        for (int i = 0; i < n; i++) {
-            div /= 2;
-            result[i] = (num / div) > 0;
-            num %= div;
-        }
-
-        return result;
+        return str;
     }
 
     public String[] solution(int n, int[] arr1, int[] arr2) {
         String[] answer = new String[n];
 
         for (int i = 0; i < n; i++) {
-            StringBuilder sb = new StringBuilder();
-            boolean[] a1 = toBin(n, arr1[i]);
-            boolean[] a2 = toBin(n, arr2[i]);
-            for (int j = 0; j < n; j++) {
-                sb.append(a1[j] || a2[j] ? '#' : ' ');
-            }
-            answer[i] = sb.toString();
+            answer[i] = bitWise(arr1[i], arr2[i], n);
         }
 
         return answer;
