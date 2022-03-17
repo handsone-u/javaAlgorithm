@@ -16,7 +16,7 @@ public class Sol4 {
     }
 
     public String solution(int n, int t, int m, String[] timetable) {
-        String answer = "";
+        String answer;
         int len = timetable.length;
         int time = toMin("09:00");
 
@@ -28,7 +28,7 @@ public class Sol4 {
         }
 
         int[] mins = Arrays.stream(timetable)
-                .mapToInt(s -> toMin(s))
+                .mapToInt(this::toMin)
                 .sorted()
                 .toArray();
         for (int i = 0; i < len; i++) {
@@ -41,27 +41,21 @@ public class Sol4 {
             map.put(maxMin, schedule);
         }
 
-//        for (Schedule schedule : list) {
-//            System.out.printf("%s %d\n", toTime(schedule.min), schedule.size);
-//        }
-
-        Collections.sort(list, Comparator.comparing(Schedule::getMinute, Comparator.reverseOrder()));
+        list.sort(Comparator.comparing(Schedule::getMinute, Comparator.reverseOrder()));
         Schedule schedule = list.get(0);
         if (schedule.size < m) {
             answer = toTime(schedule.min);
         } else {
-            ArrayList<Integer> arr = schedule.mins;
-            int maxMinute = schedule.getMaxMinute();
-            answer = toTime(maxMinute - 1);
+            answer = toTime(schedule.getMaxMinute() - 1);
         }
 
         return answer;
     }
 
     static class Schedule{
-        private int min;
+        private final int min;
         private int size;
-        private ArrayList<Integer> mins = new ArrayList<>();
+        private final ArrayList<Integer> mins = new ArrayList<>();
 
         public int getMinute() {
             return min;

@@ -7,7 +7,6 @@ public class Sol5 {
     Map<String, Integer> m2 = new HashMap<>();
 
     public int solution(String str1, String str2) {
-        int answer = 0;
         int len1 = str1.length();
         int len2 = str2.length();
         char[] arr1 = str1.toCharArray();
@@ -32,12 +31,10 @@ public class Sol5 {
 
 
         for (String k : m1.keySet()) {
+            if(!m2.containsKey(k)) continue;
+
             Integer value1 = m1.get(k);
             Integer value2 = m2.get(k);
-            if(value2==null) {
-                System.out.println("k = " + k);
-                continue;
-            }
 
             if(value1>=value2)
                 common += value2;
@@ -45,7 +42,6 @@ public class Sol5 {
                 common += value1;
         }
         union -= common;
-        System.out.printf("%d %d\n", common, union);
 
         return (int) ((union == 0 ? 1 : (double) common / union) * 65536);
     }
@@ -55,11 +51,7 @@ public class Sol5 {
         if(a>='A'&&a<='Z') a += n;
         if(b>='A'&&b<='Z') b += n;
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(a);
-        sb.append(b);
-
-        return sb.toString();
+        return String.valueOf(new char[]{a, b});
     }
 
     boolean isAlpha(char a) {
