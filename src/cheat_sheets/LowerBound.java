@@ -8,11 +8,17 @@ import java.util.Collections;
  * C++의 Vector 의 lower_bound 와 유사한 기능
  */
 public class LowerBound {
-    ArrayList<Integer> lis = new ArrayList<>();
 
-    int lowerBound(int value) {
-        int index = Collections.binarySearch(lis, value);
-        if(index>=0) return index;
-        else return -index - 1;
+    int lowerBound(ArrayList<Integer> lis, int value) {
+        int low = 0;
+        int high = lis.size();
+
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if(lis.get(mid)<value) low = mid + 1;
+            else high = mid;
+        }
+
+        return low;
     }
 }
